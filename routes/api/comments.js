@@ -6,7 +6,7 @@ const { Comment } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         const commentData = await Comment.create({
-            comment_text: req.body.comment_text,
+            content: req.body.content,
             user_id: req.session.user_id,
             blogpost_id: req.body.blogpost_id,
         });
@@ -22,7 +22,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const commentData = await Comment.destroy({
             where: {
-                id: req.params.id,
+                comment_id: req.params.id,
             },
         });
 
